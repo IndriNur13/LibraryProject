@@ -8,6 +8,7 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\PeminjamController;
 use App\Http\Controllers\PenerbitController;
 use App\Http\Controllers\PengelolaController;
+use App\Http\Controllers\PinjamBukuController;
 use App\Models\Kategori;
 use App\Models\Penerbit;
 use Illuminate\Support\Facades\Route;
@@ -68,6 +69,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/buku/edit/{id}', [BukuController::class, 'edit']);
     Route::post('/ubahbuku/{id}', [BukuController::class, 'ubah']);
     Route::get('/buku/hapus/{id}', [BukuController::class, 'hapus']);
+
+    Route::get('/indexpinjambuku', [PinjamBukuController::class, 'index']);
 
     Route::get('/logout', [AuthController::class, 'logout']);
 });

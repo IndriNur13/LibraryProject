@@ -39,6 +39,11 @@
                         <i class="fas fa-fw fa-book"></i>
                         <span>Buku</span></a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/indexpinjambuku">
+                        <i class="fas fa-fw fa-paperclip"></i>
+                        <span>Pinjam Buku</span></a>
+                </li>
 
                 @if (auth()->user()->role=="pengelola")
                 <li class="nav-item">
