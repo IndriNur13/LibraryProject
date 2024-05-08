@@ -28,6 +28,11 @@ class User extends Authenticatable
 
     protected $table = 'users';
 
+    public function transaksi()
+    {
+        return $this->hasMany(Transaksi::class, 'users_id', 'id');
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *
