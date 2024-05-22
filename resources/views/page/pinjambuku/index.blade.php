@@ -15,7 +15,7 @@
             <br>
 
             @if (auth()->user()->role == "pengelola")
-            <a href="/tambahbuku" class="btn btn-primary pull-right">Tambah Buku</a>
+            <a href="/tambahpinjaman" class="btn btn-primary pull-right">Tambah Pinjaman</a>
             @endif
 
         </div>
@@ -58,5 +58,6 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 @endsection

@@ -14,4 +14,15 @@ class PinjamBukuController extends Controller
         ];
         return view('page.pinjambuku.index', $data);
     }
+
+    public function tambahpeminjaman(Request $request)
+    {
+        return view('page.pinjambuku.create');
+    }
+
+    public function simpantransaksi(Request $request){
+        return response()->json([
+            'tanggal' => $request->tanggalpinjam,
+        ]);
+    }
 }
