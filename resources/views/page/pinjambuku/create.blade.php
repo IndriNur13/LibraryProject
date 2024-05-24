@@ -32,26 +32,26 @@
             </form>
                 <div class="row mt-2">
                     <div class="col-md-6">
-                        <button class="btn btn-primary mt-1" onclick="buatPinjaman()" > Buat Pinjaman</button>
+                        <button class="btn btn-primary mt-1" onclick="buatPinjaman()"> Buat Pinjaman</button>
                     </div>
                 </div>
                 <hr>
                 <div class="row">
                     <div class="col-md-4">
-                        <input type="text" name="" id="" class="form form-control">
+                        <input type="text" name="idbuku" id="idbuku" class="form form-control">
                     </div>
                     <div class="col-md-2">
-                        <button class="btn btn-success">Cari Buku</button>
+                        <button class="btn btn-success" onclick="cariBuku()">Cari Buku</button>
                     </div>
                 </div>
                 <div class="row mt-3">
                     <div class="col-md-3">
                         <label for="">Nama Buku</label>
-                        <input type="text" name="" id="" class="form form-control">
+                        <input type="text" name="namabuku" id="namabuku" class="form form-control">
                     </div>
                     <div class="col-md-3">
                         <label for="">Kategori</label>
-                        <input type="text" name="" id="" class="form form-control">
+                        <input type="text" name="kategoribuku" id="kategoribuku" class="form form-control">
                     </div>
                     <div class="col-md-3">
                         <label for="">Jumlah Pinjam</label>
@@ -82,11 +82,13 @@
         </div>
     </div>
 </div>
+</div>
 @endsection
 
 @push('jsfooter')
 //untuk menyisipkan file JS
 <script>
+    var idTransaksi;
 function buatPinjaman() {
     $.ajax({
         url: window.location.origin+'/simpantransaksi',
@@ -95,10 +97,28 @@ function buatPinjaman() {
         data: $('#form-buatpinjam').serialize(),
         success:function(res){
             //fungsi fungsi ketika berhasil
-            console.log(res)
+            console.log(res.idtransaksi)
+            idTransaksi=res.idtransaksi
         },
         error:function(res){
             //fungsi ketika error
+        }
+    })
+}
+
+//cari buku
+function cariBuku() {
+    $.ajax({
+        url:window.location.origin+'/caribuku/'+$('#idbuku').val(),
+        type: "GET",
+        dataType: "JSON",
+        success:function(res){
+            console.log(res)
+            $('#namabuku').val(res.data.judul_buku)
+            $('#kategoribuku').val(res.data.kategori.nama_kategori)
+        },
+        error:function(res){
+            alert("Data buku tidak ditemukan")
         }
     })
 }
